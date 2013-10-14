@@ -1,0 +1,9 @@
+[submodule "addons/ofxMSATimer"]
+	path = addons/ofxMSATimer
+	url = git@github.com:obviousjim/ofxMSATimer.git
+[submodule "lib/MiniOSC"]
+	path = lib/MiniOSC
+	url = git@github.com:satoruhiga/MiniOSC.git
+[submodule "addons/ofxCocoaGLView"]
+	path = addons/ofxCocoaGLView
+	url = git@github.com:satoruhiga/ofxCocoaGLView.git
