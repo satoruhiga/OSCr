@@ -224,6 +224,11 @@ string save_path;
 		}
 	}
 	
+	{
+		NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+		player.setPlaybackRatio([def floatForKey:NSStringFromSelector(@selector(playbackRatio))]);
+	}
+	
 	[pool drain];
 }
 

@@ -10,7 +10,7 @@ public:
 	
 	typedef float TimeStamp;
 	
-	StreamPlayer() : fps(120), is_playing(false), loop(false)
+	StreamPlayer() : fps(120), is_playing(false), loop(false), playback_ratio(1)
 	{
 		setupSocket();
 		setPosition(0);
@@ -99,6 +99,9 @@ public:
 	void setLoopState(bool yn) { loop = yn; }
 	bool getLoopState() const { return loop; }
 	
+	void setPlaybackRatio(float v) { playback_ratio = v; }
+	float getPlaybackRatio() const { return playback_ratio; }
+	
 	string getLatestMessage()
 	{
 		lock();
@@ -120,6 +123,8 @@ protected:
 	float fps;
 	float playback_fps;
 	int message_per_frame;
+	
+	float playback_ratio;
 	
 	string data;
 	
@@ -166,7 +171,7 @@ protected:
 			TimeStamp sleep_time = (inv_fps - delta);
 			if (sleep_time > 0) sleep(sleep_time * 1000);
 			
-			TimeStamp spend = timer.getSecondsSinceLastCall();
+			TimeStamp spend = timer.getSecondsSinceLastCall() * playback_ratio;
 			
 			last_tick = current_tick;
 			current_tick += spend;
