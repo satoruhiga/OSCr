@@ -221,6 +221,17 @@ string save_path;
 				int n = m.getArgAsInt32(0);
 				self.osc_through_output = n;
 			}
+			else if (addr == "/seek")
+			{
+				float p = m.getArgAsFloat(0);
+				p = ofClamp(p, 0, 1);
+				
+				float d = player.getDuration();
+				if (d > 0)
+				{
+					player.setPosition(p * d);
+				}
+			}
 		}
 	}
 	
